@@ -1,5 +1,4 @@
-import { Card } from '@mui/material';
-import Link from 'next/link';
+import { Card, CardActionArea } from '@mui/material';
 import Image from 'next/image';
 import styles from './PitchCard.module.css'
 
@@ -7,8 +6,8 @@ export default function PitchCard( { pitch } ) {
     const image = pitch.image || { src: `/images/islands/EmeraldIsle.png`, alt: "Emerald Isle" }
 
     return (
-        <Link href={`/pitches/${pitch.slug}`}>
             <Card className={styles.pitchCard} variant="outlined">
+              <CardActionArea className={styles.cardActionArea} href={`/pitches/${pitch.slug}`}>
                 {/* disabled image to simplify view for filter/sort dev */}
                 <Image
                   className={styles.pitchImage}
@@ -23,15 +22,22 @@ export default function PitchCard( { pitch } ) {
                     <li>{pitch.distance} miles away</li>
                     <li>£{pitch.price} per hour</li>
                 </ul>
-                <p>Facilities:</p>
-                <ul className="facilities-list">
-                {pitch.facilities.map((facility, index) => {
-                    return (
-                      <li key={index}>{facility}</li>
-                    )
-                  })}
-                </ul>
+                <p>Facilities:</p>                
+                {pitch.facilities.length > 0 ? 
+                  (
+                    <ul className="facilities-list">
+                      {pitch.facilities.map((facility, index) => {
+                        return (
+                          <li key={index}>{facility}</li>
+                        )
+                      })}
+                    </ul>
+                  )
+                  :
+                  (
+                    <ul><li>No extra facilities at this pitch.</li></ul>
+                  )}
+              </CardActionArea>
             </Card>
-        </Link>
     )
 }
