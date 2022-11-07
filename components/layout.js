@@ -4,17 +4,17 @@ import styles from './layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
-export const siteTitle = 'Looty';
+export const siteTitle = 'Kick-off';
 
 export default function Layout({ children, home }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Looty</title>
+        <title>{ siteTitle }</title>
         <link rel="icon" href="/treasure-chest-favicon.png" />
         <meta
           name="description"
-          content="Find treasure on islands in the Sunset Sea"
+          content="Find a football pitch near you"
         />
         {/* <meta
           property="og:image"
@@ -26,6 +26,7 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
+        {/* TODO extract football images into function with size parameter(s) */}
         {home ? (
           <>
             <Image

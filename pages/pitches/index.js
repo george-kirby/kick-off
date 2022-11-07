@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from "react"
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import Layout from '../../components/layout';
-import LootCardsList from '../../components/LootCardsList';
-import LootsFilterBar from '../../components/LootsFilterBar';
+import PitchCardsList from '../../components/PitchCardsList';
+import PitchesFilterBar from '../../components/PitchesFilterBar';
 
-import loots from '../../data/lootsData'
+import pitchesData from '../../data/pitchesData'
 
 export async function getStaticProps() {
     return {
-      props: {
-        allLootsData: loots
-      },
+      props: { pitchesData },
     };
   }
 
-export default function LootsIndex( { allLootsData }) {
+export default function PitchesIndex( { pitchesData }) {
     const [activeFilters, setActiveFilters] = useState({
         minValue: 0,
         maxValue: 10000,
@@ -22,7 +20,7 @@ export default function LootsIndex( { allLootsData }) {
         maxDistance: 1000,
         unwantedDangers: []
     });
-    const [filteredLoots, setFilteredLoots] = useState(allLootsData);
+    const [filteredPitches, setFilteredPitches] = useState(pitchesData);
     const [activeSort, setActiveSort] = useState("distanceLow");
 
     const sorting = {
@@ -53,13 +51,13 @@ export default function LootsIndex( { allLootsData }) {
     }
 
     useEffect(() => {
-        const newFilteredLoots = allLootsData.filter(loot => {
-            const valueOk = (loot.value >= activeFilters.minValue) && (loot.value <= activeFilters.maxValue)
-            const distanceOk = (loot.distance >= activeFilters.minDistance) && (loot.distance <= activeFilters.maxDistance)
-            const dangersOk = !loot.dangers.some(danger => activeFilters.unwantedDangers.includes(danger))
+        const newFilteredPitches = pitchesData.filter(pitch => {
+            const valueOk = (pitch.value >= activeFilters.minValue) && (pitch.value <= activeFilters.maxValue)
+            const distanceOk = (pitch.distance >= activeFilters.minDistance) && (pitch.distance <= activeFilters.maxDistance)
+            const dangersOk = !pitch.dangers.some(danger => activeFilters.unwantedDangers.includes(danger))
             return (valueOk && distanceOk && dangersOk)
         })
-        setFilteredLoots(newFilteredLoots)
+        setFilteredPitches(newFilteredPitches)
         }, [activeFilters]);
 
     const handleSortChange = (event) => {
@@ -69,7 +67,7 @@ export default function LootsIndex( { allLootsData }) {
     return (
         <Layout>
             <main>
-            <LootsFilterBar { ...{ allLootsData, activeFilters, setActiveFilters } }/>
+            <PitchesFilterBar { ...{ pitchesData, activeFilters, setActiveFilters } }/>
             <FormControl size="small">
                 <InputLabel>Sort</InputLabel>
                 <Select
@@ -86,7 +84,7 @@ export default function LootsIndex( { allLootsData }) {
                     })}
                 </Select>
             </FormControl>
-            <LootCardsList loots={filteredLoots.sort(sorting[activeSort].sortFunction)} />
+            <PitchCardsList pitches={filteredPitches.sort(sorting[activeSort].sortFunction)} />
 
             </main>
         </Layout>
