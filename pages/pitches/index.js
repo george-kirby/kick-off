@@ -16,7 +16,6 @@ export default function PitchesIndex( { pitchesData }) {
     const [activeFilters, setActiveFilters] = useState({
         minPrice: 0,
         maxPrice: 100,
-        minDistance: 0,
         maxDistance: 10,
         wantedFacilities: []
     });
@@ -53,7 +52,7 @@ export default function PitchesIndex( { pitchesData }) {
     useEffect(() => {
         const newFilteredPitches = pitchesData.filter(pitch => {
             const priceOk = (pitch.price >= activeFilters.minPrice) && (pitch.price <= activeFilters.maxPrice)
-            const distanceOk = (pitch.distance >= activeFilters.minDistance) && (pitch.distance <= activeFilters.maxDistance)
+            const distanceOk = (pitch.distance <= activeFilters.maxDistance)
             // const facilitiesOk = !pitch.facilities.some(facility => activeFilters.wantedFacilities.includes(facility))
             const facilitiesOk = activeFilters.wantedFacilities.every(facility => pitch.facilities.includes(facility))
             return (priceOk && distanceOk && facilitiesOk)
