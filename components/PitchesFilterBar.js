@@ -20,11 +20,12 @@ export default function PitchesFilterBar( { pitchesData, activeFilters, setActiv
     });
 
     const handleMinPriceChange = (event) => {
-        setMinPriceField(parseInt(event.target.value) || 0)
+        // setMinPriceField(parseInt(event.target.value) || 0)
+        setMinPriceField(event.target.value.replace(/[^0-9\.]+/gi, ""))
     }
-
+    
     const handleMaxPriceChange = (event) => {
-        setMaxPriceField(parseInt(event.target.value) || 10000)
+        setMaxPriceField(event.target.value.replace(/[^0-9\.]+/gi, ""))
     }
 
     const applyPriceFilter = () => {
@@ -32,7 +33,7 @@ export default function PitchesFilterBar( { pitchesData, activeFilters, setActiv
     }
 
     const handleMaxDistanceChange = (event) => {
-        setMaxDistanceField(parseInt(event.target.value) || 1000)
+        setMaxDistanceField(event.target.value.replace(/[^0-9\.]+/gi, ""))
     }
 
     const applyDistanceFilter = () => {
@@ -59,21 +60,21 @@ export default function PitchesFilterBar( { pitchesData, activeFilters, setActiv
                 <div className={styles.valueInputsContainer}>
                     <div className={styles.inputWrapper}>
                         <span>Min: £ </span>
-                        <Input type="number" value={minPriceField} min="0" max="10000" label="Min value (pounds sterling per hour)" onChange={handleMinPriceChange} />
+                        <Input type="text" pattern="\d*" value={minPriceField} min="0" max="1000" label="Min value (pounds sterling per hour)" onChange={handleMinPriceChange} />
                     </div>
                     <div className={styles.inputWrapper}>
                         <span>Max: £ </span>
-                        <Input type="number" value={maxPriceField} min="0" max="10000" label="Max value (pounds sterling per hour)" onChange={handleMaxPriceChange} />
+                        <Input type="text" pattern="\d*" value={maxPriceField} min="0" max="1000" label="Max value (pounds sterling per hour)" onChange={handleMaxPriceChange} />
                     </div>
                     <Button variant="contained" onClick={applyPriceFilter}>Apply</Button>
                 </div>
             </div>
             <div className={styles.filterContainer}>
-                <p>And distance? (miles from home)</p>
+                <p>How far can you travel? (miles from home)</p>
                 <div className={styles.valueInputsContainer}>
                     <div className={styles.inputWrapper}>
                         <span>Max distance: </span>
-                        <Input type="number" value={maxDistanceField} min="0" max="1000" label="Max distance (miles)" onChange={handleMaxDistanceChange} />
+                        <Input type="text" pattern="\d*" value={maxDistanceField} min="0" max="100" label="Max distance (miles)" onChange={handleMaxDistanceChange} />
                         <span> miles</span>
                     </div>
                     <Button variant="contained" onClick={applyDistanceFilter}>Apply</Button>

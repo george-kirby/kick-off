@@ -17,26 +17,28 @@ export default function PitchCard( { pitch } ) {
                   width={200}
                   alt={image.alt}
                 />
-                <h3>{pitch.title}</h3>
-                <ul>
-                    <li>{pitch.distance} miles away</li>
-                    <li>£{pitch.price} per hour</li>
-                </ul>
-                <p>Facilities:</p>                
-                {pitch.facilities.length > 0 ? 
-                  (
-                    <ul className="facilities-list">
-                      {pitch.facilities.map((facility, index) => {
-                        return (
-                          <li key={index}>{facility}</li>
-                        )
-                      })}
-                    </ul>
-                  )
-                  :
-                  (
-                    <ul><li>No extra facilities at this pitch.</li></ul>
-                  )}
+                <div className={styles.textContainer}>
+                  <h3>{pitch.title}</h3>
+                  <ul>
+                      <li>{pitch.distance} miles away</li>
+                      <li>£{pitch.price} per hour</li>
+                  </ul>
+                  <p>Facilities:</p>                
+                  {pitch.facilities.length > 0 ? 
+                    (
+                      <ul className="facilities-list">
+                        {pitch.facilities.map((facility, index) => {
+                          return (
+                            <li key={index}>{facility}</li>
+                          )
+                        })}
+                      </ul>
+                    )
+                    :
+                    (
+                      <ul><li>No extra facilities at this pitch.</li></ul>
+                    )}
+                </div>
               </CardActionArea>
             </Card>
     )

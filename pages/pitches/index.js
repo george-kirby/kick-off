@@ -86,6 +86,12 @@ export default function PitchesIndex( { pitchesData }) {
                     })}
                 </Select>
             </FormControl>
+            {filteredPitches.length > 0 ? (
+                <p>Showing <b>{filteredPitches.length}</b> {filteredPitches.length > 1 ? "pitches" : "pitch"}</p>
+            ) : (
+                <p>Unfortunately there are no pitches which match your search criteria.</p>
+            )
+        }
             <PitchCardsList pitches={filteredPitches.sort(sorting[activeSort].sortFunction)} />
 
             </main>
