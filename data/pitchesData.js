@@ -19,7 +19,7 @@ const pitches = [
         facilities: [],
         distance: 7.5,
         price: 100,
-        description: "Grass is the purest surface to play on.",
+        description: "Grass - the purest surface to play on.",
         image: {
             src: "/images/pitches/VictoriaPark.jpg",
             alt: "pitch and players at Victoria Park"

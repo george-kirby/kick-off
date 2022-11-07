@@ -33,16 +33,16 @@ export default function Layout({ children, home, pitches, about }) {
             src="/images\Football.svg"
             height={144}
             width={144}
-            alt=""
+            alt="soccer ball"
           />
         ) : (
           <Link href="/">
             <Image
               priority
               src="/images\Football.svg"
-              height={108}
-              width={108}
-              alt=""
+              height={80}
+              width={80}
+              alt="soccer ball"
             />
           </Link>
         )}

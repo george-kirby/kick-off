@@ -1,14 +1,14 @@
 import { Card, CardActionArea } from '@mui/material';
 import Image from 'next/image';
 import styles from './PitchCard.module.css'
+import PitchFacilities from './PitchFacilities';
 
 export default function PitchCard( { pitch } ) {
-    const image = pitch.image || { src: `/images/islands/EmeraldIsle.png`, alt: "Emerald Isle" }
+    const image = pitch.image || { src: `/images/Football.svg`, alt: "football soccer ball" }
 
     return (
             <Card className={styles.pitchCard} variant="outlined">
               <CardActionArea className={styles.cardActionArea} href={`/pitches/${pitch.slug}`}>
-                {/* disabled image to simplify view for filter/sort dev */}
                 <Image
                   className={styles.pitchImage}
                   priority
@@ -23,21 +23,7 @@ export default function PitchCard( { pitch } ) {
                       <li>{pitch.distance} miles away</li>
                       <li>£{pitch.price} per hour</li>
                   </ul>
-                  <p>Facilities:</p>                
-                  {pitch.facilities.length > 0 ? 
-                    (
-                      <ul className="facilities-list">
-                        {pitch.facilities.map((facility, index) => {
-                          return (
-                            <li key={index}>{facility}</li>
-                          )
-                        })}
-                      </ul>
-                    )
-                    :
-                    (
-                      <ul><li>No extra facilities at this pitch.</li></ul>
-                    )}
+                  <PitchFacilities facilities={pitch.facilities} />
                 </div>
               </CardActionArea>
             </Card>
