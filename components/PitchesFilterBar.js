@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Checkbox, FormControl, FormControlLabel, Input, Button } from '@mui/material';
 
 
-export default function LootsFilterBar( { allLootsData, activeFilters, setActiveFilters } ) {
+export default function PitchesFilterBar( { pitchesData, activeFilters, setActiveFilters } ) {
     
     const [minValueField, setMinValueField] = useState(0)
     const [maxValueField, setMaxValueField] = useState(10000)
@@ -12,8 +12,8 @@ export default function LootsFilterBar( { allLootsData, activeFilters, setActive
 
     const [allDangers, setAllDangers] = useState(() => {
         const allDangersInitial = []
-        allLootsData.forEach(loot => {
-            loot.dangers.forEach(danger => {
+        pitchesData.forEach(pitch => {
+            pitch.dangers.forEach(danger => {
                 if (!allDangersInitial.includes(danger)) { allDangersInitial.push(danger) }
             })
         })

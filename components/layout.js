@@ -30,7 +30,7 @@ export default function Layout({ children, home }) {
           <>
             <Image
               priority
-              src="/images\ParrotPirate.svg"
+              src="/images\Football.svg"
               height={144}
               width={144}
               alt=""
@@ -42,7 +42,7 @@ export default function Layout({ children, home }) {
             <Link href="/">
                 <Image
                   priority
-                  src="/images\ParrotPirate.svg"
+                  src="/images\Football.svg"
                   height={108}
                   width={108}
                   alt=""

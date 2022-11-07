@@ -2,35 +2,35 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link';
-import loots from '../data/lootsData'
+import pitchesData from '../data/pitchesData'
 import Layout from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 
-import LootCardsList from '../components/LootCardsList';
+import PitchCardsList from '../components/PitchCardsList';
 
 const ParrotImage = () => (
   <Image
-    src="/images/ParrotPirate.svg"
+    src="/images/Football.svg"
     height={350}
     width={700}
-    alt="pirate parrot"
+    alt="football soccer ball"
   />
 );
 
 export async function getStaticProps() {
   return {
     props: {
-      allLootsData: loots
+      pitchesData      
     },
   };
 }
 
-export default function Home({ allLootsData }) {
+export default function Home({ pitchesData }) {
   return (
     <Layout home>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to Looty!
+          Welcome to Kick-off!
         </h1>
 
         <ParrotImage />
@@ -38,7 +38,7 @@ export default function Home({ allLootsData }) {
         <p>Jump right in by searching for treasure on <Link href="/loots/emerald-isle">Emerald Isle</Link></p>
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Known loots</h2>
-        <LootCardsList loots={allLootsData} />
+        <PitchCardsList pitches={pitchesData} />
       </section>
       </main>
     </Layout>

@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link';
 import Layout from '../../components/layout';
-import loots from '../../data/lootsData'
+import pitches from '../../data/pitchesData'
 
 export async function getStaticPaths() {
     // Return a list of possible value for id
-    const paths = loots.map(loot => {
-        return { params: { slug: loot.slug } }
+    const paths = pitches.map(pitch => {
+        return { params: { slug: pitch.slug } }
     })
     return {
         paths,
@@ -15,15 +15,15 @@ export async function getStaticPaths() {
   }
 
 export async function getStaticProps({ params }) {
-    const loot = loots.find(loot => {
-        return loot.slug === params.slug
+    const pitch = pitches.find(pitch => {
+        return pitch.slug === params.slug
     })
     return {
-      props: loot,
+      props: pitch,
     };
   }
 
-export default function Loot( { title, description } ) {
+export default function Pitch( { title, description } ) {
     return (
         <Layout>
             <Head>

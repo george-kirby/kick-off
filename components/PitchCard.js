@@ -2,11 +2,11 @@ import { Card } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export default function LootCard( { loot } ) {
-    const image = loot.image || { src: `/images/islands/EmeraldIsle.png`, alt: "Emerald Isle" }
+export default function PitchCard( { pitch } ) {
+    const image = pitch.image || { src: `/images/islands/EmeraldIsle.png`, alt: "Emerald Isle" }
 
     return (
-        <Link href={`/loots/${loot.slug}`}>
+        <Link href={`/pitches/${pitch.slug}`}>
             <Card variant="outlined">
                 {/* disabled image to simplify view for filter/sort dev */}
                 {/* <Image
@@ -16,13 +16,13 @@ export default function LootCard( { loot } ) {
                   width={20}
                   alt={image.alt}
                 /> */}
-                <h3>{loot.title}</h3>
+                <h3>{pitch.title}</h3>
                 <ul>
-                    <li>{loot.distance} miles</li>
-                    <li>{loot.value} dubloons</li>
+                    <li>{pitch.distance} miles</li>
+                    <li>{pitch.value} dubloons</li>
                 </ul>
                 <ul className="dangers-list">
-                {loot.dangers.map((danger, index) => {
+                {pitch.dangers.map((danger, index) => {
                     return (
                       <li key={index}>{danger}</li>
                     )
