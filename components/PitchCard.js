@@ -1,6 +1,7 @@
 import { Card } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
+import styles from './PitchCard.module.css'
 
 export default function PitchCard( { pitch } ) {
     const image = pitch.image || { src: `/images/islands/EmeraldIsle.png`, alt: "Emerald Isle" }
@@ -9,13 +10,14 @@ export default function PitchCard( { pitch } ) {
         <Link href={`/pitches/${pitch.slug}`}>
             <Card variant="outlined">
                 {/* disabled image to simplify view for filter/sort dev */}
-                {/* <Image
+                <Image
+                  className={styles.pitchImage}
                   priority
                   src={image.src}
-                  height={20}
-                  width={20}
+                  height={200}
+                  width={200}
                   alt={image.alt}
-                /> */}
+                />
                 <h3>{pitch.title}</h3>
                 <ul>
                     <li>{pitch.distance} miles away</li>
