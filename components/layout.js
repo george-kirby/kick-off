@@ -1,17 +1,18 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from './layout.module.css';
+import homeStyles from '../styles/Home.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
 export const siteTitle = 'Kick-off';
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, pitches, about }) {
   return (
     <div className={styles.container}>
       <Head>
         <title>{ siteTitle }</title>
-        <link rel="icon" href="/treasure-chest-favicon.png" />
+        <link rel="icon" href="/images/Football.svg" />
         <meta
           name="description"
           content="Find a football pitch near you"
@@ -25,41 +26,46 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header className={home && styles.homeHeader}>
         {/* TODO extract football images into function with size parameter(s) */}
         {home ? (
-          <>
+          <Image
+            priority
+            src="/images\Football.svg"
+            height={144}
+            width={144}
+            alt="soccer ball"
+          />
+        ) : (
+          <Link href="/">
             <Image
               priority
               src="/images\Football.svg"
-              height={144}
-              width={144}
-              alt=""
+              height={80}
+              width={80}
+              alt="soccer ball"
             />
-            <h1 className={utilStyles.heading2Xl}>{siteTitle}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-                <Image
-                  priority
-                  src="/images\Football.svg"
-                  height={108}
-                  width={108}
-                  alt=""
-                />
-            </Link>
-          </>
+          </Link>
         )}
       </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            ← Back to home
-          </Link>
-        </div>
-      )}
+      <main className={home && homeStyles.main}>{children}</main>
+      <footer className={styles.footer}>
+        {!home && (
+            <Link href="/">
+              Home
+            </Link>
+        )}
+        {!pitches && (
+            <Link href="/pitches">
+              Pitches
+            </Link>
+        )}
+        {!about && (
+            <Link href="/about">
+              About
+            </Link>
+        )}
+      </footer>
     </div>
   );
 }

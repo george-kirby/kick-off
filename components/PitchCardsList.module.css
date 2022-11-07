@@ -1,0 +1,13 @@
+.pitchCardsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 550px;
+}
+
+/* above 770px */
+@media screen and (min-width: 770px) {
+    .pitchCardsList {
+        max-width: 800px;
+    }
+}

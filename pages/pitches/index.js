@@ -3,6 +3,7 @@ import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import Layout from '../../components/layout';
 import PitchCardsList from '../../components/PitchCardsList';
 import PitchesFilterBar from '../../components/PitchesFilterBar';
+import styles from './PitchesIndex.module.css'
 
 import pitchesData from '../../data/pitchesData'
 
@@ -16,7 +17,6 @@ export default function PitchesIndex( { pitchesData }) {
     const [activeFilters, setActiveFilters] = useState({
         minPrice: 0,
         maxPrice: 100,
-        minDistance: 0,
         maxDistance: 10,
         wantedFacilities: []
     });
@@ -53,7 +53,7 @@ export default function PitchesIndex( { pitchesData }) {
     useEffect(() => {
         const newFilteredPitches = pitchesData.filter(pitch => {
             const priceOk = (pitch.price >= activeFilters.minPrice) && (pitch.price <= activeFilters.maxPrice)
-            const distanceOk = (pitch.distance >= activeFilters.minDistance) && (pitch.distance <= activeFilters.maxDistance)
+            const distanceOk = (pitch.distance <= activeFilters.maxDistance)
             // const facilitiesOk = !pitch.facilities.some(facility => activeFilters.wantedFacilities.includes(facility))
             const facilitiesOk = activeFilters.wantedFacilities.every(facility => pitch.facilities.includes(facility))
             return (priceOk && distanceOk && facilitiesOk)
@@ -66,11 +66,11 @@ export default function PitchesIndex( { pitchesData }) {
     }
 
     return (
-        <Layout>
+        <Layout pitches>
             <main>
             <h1>Find a football pitch in London</h1>
             <PitchesFilterBar { ...{ pitchesData, activeFilters, setActiveFilters } }/>
-            <FormControl size="small">
+            <FormControl className={styles.sortContainer} size="small">
                 <InputLabel>Sort</InputLabel>
                 <Select
                     value={activeSort}
@@ -86,6 +86,12 @@ export default function PitchesIndex( { pitchesData }) {
                     })}
                 </Select>
             </FormControl>
+            {filteredPitches.length > 0 ? (
+                <p>Showing <b>{filteredPitches.length}</b> {filteredPitches.length > 1 ? "pitches" : "pitch"}</p>
+            ) : (
+                <p>Unfortunately there are no pitches which match your search criteria.</p>
+            )
+        }
             <PitchCardsList pitches={filteredPitches.sort(sorting[activeSort].sortFunction)} />
 
             </main>

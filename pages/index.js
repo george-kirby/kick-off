@@ -17,23 +17,21 @@ export async function getStaticProps() {
 export default function Home({ pitchesData }) {
   return (
     <Layout home>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to Kick-off!
-        </h1>
+      <h1 className={styles.title}>
+        Welcome to Kick-off!
+      </h1>
 
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-          <p>
-            Looking for a football pitch in London?
-          </p>
-          
-          <p>Check out our favourite pitch this month: <Link href="/pitches/archbishops-park">Archbishop's Park</Link></p>
-          
-          <p>
-            Or you can browse from <Link href="/pitches">the whole list</Link>.
-          </p>
+      <section className={utilStyles.section}>
+        <p>
+          Looking for a football pitch in London?
+        </p>
+        
+        <p>Check out our favourite pitch this month: <Link href="/pitches/archbishops-park">Archbishop's Park</Link>.</p>
+        
+        <p>
+          Or you can browse <Link href="/pitches">the whole list</Link>.
+        </p>
       </section>
-      </main>
     </Layout>
   )
 }

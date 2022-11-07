@@ -1,35 +1,31 @@
-import { Card } from '@mui/material';
-import Link from 'next/link';
+import { Card, CardActionArea } from '@mui/material';
 import Image from 'next/image';
+import styles from './PitchCard.module.css'
+import PitchFacilities from './PitchFacilities';
 
 export default function PitchCard( { pitch } ) {
-    const image = pitch.image || { src: `/images/islands/EmeraldIsle.png`, alt: "Emerald Isle" }
+    const image = pitch.image || { src: `/images/Football.svg`, alt: "football soccer ball" }
 
     return (
-        <Link href={`/pitches/${pitch.slug}`}>
-            <Card variant="outlined">
-                {/* disabled image to simplify view for filter/sort dev */}
-                {/* <Image
+            <Card className={styles.pitchCard} variant="outlined">
+              <CardActionArea className={styles.cardActionArea} href={`/pitches/${pitch.slug}`}>
+                <Image
+                  className={styles.pitchImage}
                   priority
                   src={image.src}
-                  height={20}
-                  width={20}
+                  height={200}
+                  width={200}
                   alt={image.alt}
-                /> */}
-                <h3>{pitch.title}</h3>
-                <ul>
-                    <li>{pitch.distance} miles away</li>
-                    <li>£{pitch.price} per hour</li>
-                </ul>
-                <p>Facilities:</p>
-                <ul className="facilities-list">
-                {pitch.facilities.map((facility, index) => {
-                    return (
-                      <li key={index}>{facility}</li>
-                    )
-                  })}
-                </ul>
+                />
+                <div className={styles.textContainer}>
+                  <h3>{pitch.title}</h3>
+                  <ul>
+                      <li>{pitch.distance} miles away</li>
+                      <li>£{pitch.price} per hour</li>
+                  </ul>
+                  <PitchFacilities facilities={pitch.facilities} />
+                </div>
+              </CardActionArea>
             </Card>
-        </Link>
     )
 }

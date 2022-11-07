@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react"
 import { Checkbox, FormControl, FormControlLabel, Input, Button } from '@mui/material';
-
+import styles from './PitchesFilterBar.module.css'
 
 export default function PitchesFilterBar( { pitchesData, activeFilters, setActiveFilters } ) {
     
     const [minPriceField, setMinPriceField] = useState(0)
     const [maxPriceField, setMaxPriceField] = useState(activeFilters.maxPrice)
-    const [minDistanceField, setMinDistanceField] = useState(0)
     const [maxDistanceField, setMaxDistanceField] = useState(activeFilters.maxDistance)
 
 
@@ -21,27 +20,24 @@ export default function PitchesFilterBar( { pitchesData, activeFilters, setActiv
     });
 
     const handleMinPriceChange = (event) => {
-        setMinPriceField(parseInt(event.target.value) || 0)
+        // setMinPriceField(parseInt(event.target.value) || 0)
+        setMinPriceField(event.target.value.replace(/[^0-9\.]+/gi, ""))
     }
-
+    
     const handleMaxPriceChange = (event) => {
-        setMaxPriceField(parseInt(event.target.value) || 10000)
+        setMaxPriceField(event.target.value.replace(/[^0-9\.]+/gi, ""))
     }
 
     const applyPriceFilter = () => {
         setActiveFilters({...activeFilters, minPrice: minPriceField, maxPrice: maxPriceField})
     }
 
-    const handleMinDistanceChange = (event) => {
-        setMinDistanceField(parseInt(event.target.value) || 0)
-    }
-
     const handleMaxDistanceChange = (event) => {
-        setMaxDistanceField(parseInt(event.target.value) || 1000)
+        setMaxDistanceField(event.target.value.replace(/[^0-9\.]+/gi, ""))
     }
 
     const applyDistanceFilter = () => {
-        setActiveFilters({...activeFilters, minDistance: minDistanceField, maxDistance: maxDistanceField})
+        setActiveFilters({...activeFilters, maxDistance: maxDistanceField})
     }
 
     const toggleFacility = (facility, value) => {
@@ -59,24 +55,32 @@ export default function PitchesFilterBar( { pitchesData, activeFilters, setActiv
 
     return (
         <div>
-            <div className="value-input">
+            <div className={styles.filterContainer}>
                 <p>What's your price range? (£ per hour)</p>
-                <div className="value-inputs-container">
-                    <Input type="number" value={minPriceField} min="0" max="10000" label="Min value (pounds sterling per hour)" onChange={handleMinPriceChange} />
-                    <Input type="number" value={maxPriceField} min="0" max="10000" label="Max value (pounds sterling per hour)" onChange={handleMaxPriceChange} />
-                    <Button variant="contained" type="submit" onClick={applyPriceFilter}>Apply</Button>
+                <div className={styles.valueInputsContainer}>
+                    <div className={styles.inputWrapper}>
+                        <span>Min: £ </span>
+                        <Input type="text" pattern="\d*" value={minPriceField} min="0" max="1000" label="Min value (pounds sterling per hour)" onChange={handleMinPriceChange} />
+                    </div>
+                    <div className={styles.inputWrapper}>
+                        <span>Max: £ </span>
+                        <Input type="text" pattern="\d*" value={maxPriceField} min="0" max="1000" label="Max value (pounds sterling per hour)" onChange={handleMaxPriceChange} />
+                    </div>
+                    <Button variant="contained" onClick={applyPriceFilter}>Apply</Button>
                 </div>
             </div>
-            <div className="distance-input">
-                <p>And distance? (miles from home)</p>
-                <div className="distance-inputs-container">
-                    <Input type="number" value={minDistanceField} min="0" max="1000" label="Min distance (miles)" onChange={handleMinDistanceChange} />
-                    <Input type="number" value={maxDistanceField} min="0" max="1000" label="Max distance (miles)" onChange={handleMaxDistanceChange} />
-                    <Button variant="contained" type="submit" onClick={applyDistanceFilter}>Apply</Button>
+            <div className={styles.filterContainer}>
+                <p>How far can you travel? (miles from home)</p>
+                <div className={styles.valueInputsContainer}>
+                    <div className={styles.inputWrapper}>
+                        <span>Max distance: </span>
+                        <Input type="text" pattern="\d*" value={maxDistanceField} min="0" max="100" label="Max distance (miles)" onChange={handleMaxDistanceChange} />
+                        <span> miles</span>
+                    </div>
+                    <Button variant="contained" onClick={applyDistanceFilter}>Apply</Button>
                 </div>
             </div>
-            <div className="distance-input"></div>
-            <div className="facilities-inputs">
+            <div className={styles.filterContainer}>
                 <p>Select any facilities you need:</p>
                 {allFacilities.map((facility, index) => {
                     return (
