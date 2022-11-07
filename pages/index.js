@@ -26,7 +26,7 @@ export default function Home({ pitchesData }) {
           Looking for a football pitch in London?
         </p>
         
-        <p>Check out our favourite pitch this month: <Link href="/pitches/archbishops-park">Archbishop's Park</Link>.</p>
+        <p>Check out our favourite pitch this month: <Link href="/pitches/hackney-marshes">Hackney Marshes</Link>.</p>
         
         <p>
           Or you can browse <Link href="/pitches">the whole list</Link>.
