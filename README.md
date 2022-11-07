@@ -38,5 +38,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 **Credits**
 
-https://openclipart.org/detail/272092/parrot-pirate
+https://openclipart.org/detail/284865/soccerball
 https://openclipart.org/detail/336904/happy-pirate-treasure-isolated
