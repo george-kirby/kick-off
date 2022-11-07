@@ -8,8 +8,8 @@ const pitches = [
         price: 90,
         description: "Most of the time this island appears sunny and welcoming. Don't get lulled into complacency - watch out for the snakes!",
         image: {
-            src: "/images/islands/Emeraldpark.png",
-            alt: "Emerald park"
+            src: "/images/pitches/HaggerstonPark.jpg",
+            alt: "pitch and players at Haggerston Park"
         }
     },
     {
@@ -20,6 +20,10 @@ const pitches = [
         distance: 7.5,
         price: 100,
         description: "Grass is the purest surface to play on.",
+        image: {
+            src: "/images/pitches/VictoriaPark.jpg",
+            alt: "pitch and players at Victoria Park"
+        }
     },
     {
         id: 3,
@@ -28,7 +32,11 @@ const pitches = [
         facilities: ["changing rooms", "floodlights"],
         distance: 4,
         price: 80,
-        description: "Tiny pitches squeezed under a railway."
+        description: "Tiny pitches squeezed under a railway.",
+        image: {
+            src: "/images/pitches/PowerleagueShoreditch.jpg",
+            alt: "pitch at Powerleague Shoreditch"
+        }
     },
     {
         id: 4,
@@ -37,7 +45,11 @@ const pitches = [
         facilities: ["floodlights"],
         distance: 2,
         price: 70,
-        description: "Lovely 4G pitch; goals could be better."
+        description: "Lovely 4G pitch; goals could be better.",
+        image: {
+            src: "/images/pitches/ArchbishopsPark.jpg",
+            alt: "pitches at Archbishop's Park"
+        }
     },
     {
         id: 5,
@@ -46,7 +58,11 @@ const pitches = [
         facilities: ["changing rooms", "lockers"],
         distance: 8,
         price: 50,
-        description: "The true home of Sunday League football."
+        description: "The true home of Sunday League football.",
+        image: {
+            src: "/images/pitches/HackneyMarshes.jpg",
+            alt: "pitches at Hackney Marshes"
+        }
     },
     {
         id: 6,
@@ -55,7 +71,11 @@ const pitches = [
         facilities: ["changing rooms", "floodlights"],
         distance: 9,
         price: 90,
-        description: "Great surface, great goals, close to Leyton station."
+        description: "Great surface, great goals, close to Leyton station.",
+        image: {
+            src: "/images/pitches/DrapersField.jpg",
+            alt: "pitch at Drapers Field"
+        }
     },
 ]
 

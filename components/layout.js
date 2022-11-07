@@ -11,7 +11,7 @@ export default function Layout({ children, home }) {
     <div className={styles.container}>
       <Head>
         <title>{ siteTitle }</title>
-        <link rel="icon" href="/treasure-chest-favicon.png" />
+        <link rel="icon" href="/images/Football.svg" />
         <meta
           name="description"
           content="Find a football pitch near you"
