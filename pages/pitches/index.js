@@ -14,11 +14,11 @@ export async function getStaticProps() {
 
 export default function PitchesIndex( { pitchesData }) {
     const [activeFilters, setActiveFilters] = useState({
-        minValue: 0,
-        maxValue: 10000,
+        minPrice: 0,
+        maxPrice: 100,
         minDistance: 0,
-        maxDistance: 1000,
-        unwantedFacilities: []
+        maxDistance: 10,
+        wantedFacilities: []
     });
     const [filteredPitches, setFilteredPitches] = useState(pitchesData);
     const [activeSort, setActiveSort] = useState("distanceLow");
@@ -30,32 +30,33 @@ export default function PitchesIndex( { pitchesData }) {
                 return a.distance - b.distance
             },
         },
-        distanceHigh: {
-            displayText: "Furthest first",
+        // distanceHigh: {
+        //     displayText: "Furthest first",
+        //     sortFunction: (a, b) => {
+        //         return b.distance - a.distance
+        //     }
+        // },
+        priceLow: {
+            displayText: "Price low-to-high",
             sortFunction: (a, b) => {
-                return b.distance - a.distance
-            }
-        },
-        valueHigh: {
-            displayText: "Value high-to-low",
-            sortFunction: (a, b) => {
-                return b.value - a.value
+                return a.price - b.price
             },
         },
-        valueLow: {
-            displayText: "Value low-to-high",
+        priceHigh: {
+            displayText: "Price high-to-low",
             sortFunction: (a, b) => {
-                return a.value - b.value
+                return b.price - a.price
             },
-        }
+        },
     }
 
     useEffect(() => {
         const newFilteredPitches = pitchesData.filter(pitch => {
-            const valueOk = (pitch.value >= activeFilters.minValue) && (pitch.value <= activeFilters.maxValue)
+            const priceOk = (pitch.price >= activeFilters.minPrice) && (pitch.price <= activeFilters.maxPrice)
             const distanceOk = (pitch.distance >= activeFilters.minDistance) && (pitch.distance <= activeFilters.maxDistance)
-            const facilitiesOk = !pitch.facilities.some(facility => activeFilters.unwantedFacilities.includes(facility))
-            return (valueOk && distanceOk && facilitiesOk)
+            // const facilitiesOk = !pitch.facilities.some(facility => activeFilters.wantedFacilities.includes(facility))
+            const facilitiesOk = activeFilters.wantedFacilities.every(facility => pitch.facilities.includes(facility))
+            return (priceOk && distanceOk && facilitiesOk)
         })
         setFilteredPitches(newFilteredPitches)
         }, [activeFilters]);

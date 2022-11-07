@@ -32,7 +32,7 @@ export default function Pitch( { title, description } ) {
             <main>
                 <h1>{ title }</h1>
                 <p>{ description }</p>
-                <p>Too scared of the snakes? Go back <Link href="/">Home</Link>, you scurvy dog</p>
+                <p>Not right for you? <Link href="/pitches">Check out others</Link></p>
             </main>
         </Layout>
     )

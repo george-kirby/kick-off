@@ -35,7 +35,7 @@ export default function Home({ pitchesData }) {
 
         <ParrotImage />
 
-        <p>Jump right in by searching for treasure on <Link href="/loots/emerald-isle">Emerald Isle</Link></p>
+        <p>Check out our favourite pitch this month: <Link href="/loots/archbishops-park">Archbishop's Park</Link></p>
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Known loots</h2>
         <PitchCardsList pitches={pitchesData} />

@@ -18,9 +18,10 @@ export default function PitchCard( { pitch } ) {
                 /> */}
                 <h3>{pitch.title}</h3>
                 <ul>
-                    <li>{pitch.distance} miles</li>
-                    <li>{pitch.value} dubloons</li>
+                    <li>{pitch.distance} miles away</li>
+                    <li>£{pitch.price} per hour</li>
                 </ul>
+                <p>Facilities:</p>
                 <ul className="facilities-list">
                 {pitch.facilities.map((facility, index) => {
                     return (

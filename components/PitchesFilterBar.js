@@ -5,9 +5,9 @@ import { Checkbox, FormControl, FormControlLabel, Input, Button } from '@mui/mat
 export default function PitchesFilterBar( { pitchesData, activeFilters, setActiveFilters } ) {
     
     const [minPriceField, setMinPriceField] = useState(0)
-    const [maxPriceField, setMaxPriceField] = useState(10000)
+    const [maxPriceField, setMaxPriceField] = useState(activeFilters.maxPrice)
     const [minDistanceField, setMinDistanceField] = useState(0)
-    const [maxDistanceField, setMaxDistanceField] = useState(1000)
+    const [maxDistanceField, setMaxDistanceField] = useState(activeFilters.maxDistance)
 
 
     const [allFacilities, setAllFacilities] = useState(() => {
@@ -45,16 +45,16 @@ export default function PitchesFilterBar( { pitchesData, activeFilters, setActiv
     }
 
     const toggleFacility = (facility, value) => {
-        const newUnwantedFacilities = [...activeFilters.unwantedFacilities]
+        const newWantedFacilities = [...activeFilters.wantedFacilities]
         if (value) {
-            newUnwantedFacilities.push(facility)
+            newWantedFacilities.push(facility)
         } else {
-            const index = newUnwantedFacilities.indexOf(facility);
+            const index = newWantedFacilities.indexOf(facility);
                 if (index > -1) { 
-                    newUnwantedFacilities.splice(index, 1);
+                    newWantedFacilities.splice(index, 1);
                 }
             }
-        setActiveFilters({...activeFilters, unwantedFacilities: newUnwantedFacilities})
+        setActiveFilters({...activeFilters, wantedFacilities: newWantedFacilities})
     }
 
     return (
