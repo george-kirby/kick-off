@@ -56,7 +56,7 @@ export default function PitchesFilterBar( { pitchesData, activeFilters, setActiv
     return (
         <div>
             <div className={styles.filterContainer}>
-                <p>What's your price range? (£ per hour)</p>
+                <p>What&apos;s your price range? (£ per hour)</p>
                 <div className={styles.valueInputsContainer}>
                     <div className={styles.inputWrapper}>
                         <span>Min: £ </span>
