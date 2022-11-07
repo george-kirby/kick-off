@@ -66,7 +66,7 @@ export default function PitchesIndex( { pitchesData }) {
     }
 
     return (
-        <Layout>
+        <Layout pitches>
             <main>
             <h1>Find a football pitch in London</h1>
             <PitchesFilterBar { ...{ pitchesData, activeFilters, setActiveFilters } }/>

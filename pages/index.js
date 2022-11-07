@@ -22,7 +22,7 @@ export default function Home({ pitchesData }) {
           Welcome to Kick-off!
         </h1>
 
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <section className={utilStyles.section}>
           <p>
             Looking for a football pitch in London?
           </p>

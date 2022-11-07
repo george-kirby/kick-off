@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 export const siteTitle = 'Kick-off';
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, home, pitches, about }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -25,41 +25,46 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header className={home && styles.homeHeader}>
         {/* TODO extract football images into function with size parameter(s) */}
         {home ? (
-          <>
+          <Image
+            priority
+            src="/images\Football.svg"
+            height={144}
+            width={144}
+            alt=""
+          />
+        ) : (
+          <Link href="/">
             <Image
               priority
               src="/images\Football.svg"
-              height={144}
-              width={144}
+              height={108}
+              width={108}
               alt=""
             />
-            <h1 className={utilStyles.heading2Xl}>{siteTitle}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-                <Image
-                  priority
-                  src="/images\Football.svg"
-                  height={108}
-                  width={108}
-                  alt=""
-                />
-            </Link>
-          </>
+          </Link>
         )}
       </header>
       <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">
-            ← Back to home
-          </Link>
-        </div>
-      )}
+      <footer className={styles.footer}>
+        {!home && (
+            <Link href="/">
+              Home
+            </Link>
+        )}
+        {!pitches && (
+            <Link href="/pitches">
+              Pitches
+            </Link>
+        )}
+        {!about && (
+            <Link href="/about">
+              About
+            </Link>
+        )}
+      </footer>
     </div>
   );
 }
