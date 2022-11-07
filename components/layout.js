@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from './layout.module.css';
+import homeStyles from '../styles/Home.module.css';
 import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 
@@ -47,7 +48,7 @@ export default function Layout({ children, home, pitches, about }) {
           </Link>
         )}
       </header>
-      <main>{children}</main>
+      <main className={home && homeStyles.main}>{children}</main>
       <footer className={styles.footer}>
         {!home && (
             <Link href="/">
