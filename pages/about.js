@@ -8,7 +8,7 @@ import utilStyles from '../styles/utils.module.css';
 export default function About() {
 
     const newTabLink = (link, text) => {
-        return <a href={link} target="_blank">{text}</a>
+        return <a href={link} target="_blank" rel="noreferrer">{text}</a>
     }
 
   return (
