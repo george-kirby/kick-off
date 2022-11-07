@@ -6,17 +6,6 @@ import pitchesData from '../data/pitchesData'
 import Layout from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 
-import PitchCardsList from '../components/PitchCardsList';
-
-const ParrotImage = () => (
-  <Image
-    src="/images/Football.svg"
-    height={350}
-    width={700}
-    alt="football soccer ball"
-  />
-);
-
 export async function getStaticProps() {
   return {
     props: {
@@ -33,12 +22,16 @@ export default function Home({ pitchesData }) {
           Welcome to Kick-off!
         </h1>
 
-        <ParrotImage />
-
-        <p>Check out our favourite pitch this month: <Link href="/loots/archbishops-park">Archbishop's Park</Link></p>
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Known loots</h2>
-        <PitchCardsList pitches={pitchesData} />
+          <p>
+            Looking for a football pitch in London?
+          </p>
+          
+          <p>Check out our favourite pitch this month: <Link href="/pitches/archbishops-park">Archbishop's Park</Link></p>
+          
+          <p>
+            Or you can browse from <Link href="/pitches">the whole list</Link>.
+          </p>
       </section>
       </main>
     </Layout>
