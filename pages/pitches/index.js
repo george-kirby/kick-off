@@ -3,6 +3,7 @@ import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import Layout from '../../components/layout';
 import PitchCardsList from '../../components/PitchCardsList';
 import PitchesFilterBar from '../../components/PitchesFilterBar';
+import styles from './PitchesIndex.module.css'
 
 import pitchesData from '../../data/pitchesData'
 
@@ -69,7 +70,7 @@ export default function PitchesIndex( { pitchesData }) {
             <main>
             <h1>Find a football pitch in London</h1>
             <PitchesFilterBar { ...{ pitchesData, activeFilters, setActiveFilters } }/>
-            <FormControl size="small">
+            <FormControl className={styles.sortContainer} size="small">
                 <InputLabel>Sort</InputLabel>
                 <Select
                     value={activeSort}

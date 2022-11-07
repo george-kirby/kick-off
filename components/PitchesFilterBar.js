@@ -54,32 +54,32 @@ export default function PitchesFilterBar( { pitchesData, activeFilters, setActiv
 
     return (
         <div>
-            <div className="value-input">
+            <div className={styles.filterContainer}>
                 <p>What's your price range? (£ per hour)</p>
                 <div className={styles.valueInputsContainer}>
                     <div className={styles.inputWrapper}>
-                        <span>Min: </span>
+                        <span>Min: £ </span>
                         <Input type="number" value={minPriceField} min="0" max="10000" label="Min value (pounds sterling per hour)" onChange={handleMinPriceChange} />
                     </div>
                     <div className={styles.inputWrapper}>
-                        <span>Max: </span>
+                        <span>Max: £ </span>
                         <Input type="number" value={maxPriceField} min="0" max="10000" label="Max value (pounds sterling per hour)" onChange={handleMaxPriceChange} />
                     </div>
-                    <Button variant="contained" type="submit" onClick={applyPriceFilter}>Apply</Button>
+                    <Button variant="contained" onClick={applyPriceFilter}>Apply</Button>
                 </div>
             </div>
-            <div className="distance-input">
+            <div className={styles.filterContainer}>
                 <p>And distance? (miles from home)</p>
                 <div className={styles.valueInputsContainer}>
                     <div className={styles.inputWrapper}>
                         <span>Max distance: </span>
                         <Input type="number" value={maxDistanceField} min="0" max="1000" label="Max distance (miles)" onChange={handleMaxDistanceChange} />
+                        <span> miles</span>
                     </div>
-                    <Button variant="contained" type="submit" onClick={applyDistanceFilter}>Apply</Button>
+                    <Button variant="contained" onClick={applyDistanceFilter}>Apply</Button>
                 </div>
             </div>
-            <div className="distance-input"></div>
-            <div className="facilities-inputs">
+            <div className={styles.filterContainer}>
                 <p>Select any facilities you need:</p>
                 {allFacilities.map((facility, index) => {
                     return (

@@ -1,3 +1,7 @@
+.filterContainer {
+    margin: 20px auto;
+}
+
 .valueInputsContainer {
     display: flex;
     justify-content: space-between;

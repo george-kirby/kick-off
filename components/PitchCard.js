@@ -8,7 +8,7 @@ export default function PitchCard( { pitch } ) {
 
     return (
         <Link href={`/pitches/${pitch.slug}`}>
-            <Card variant="outlined">
+            <Card className={styles.pitchCard} variant="outlined">
                 {/* disabled image to simplify view for filter/sort dev */}
                 <Image
                   className={styles.pitchImage}

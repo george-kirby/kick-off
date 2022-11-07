@@ -6,7 +6,7 @@ const pitches = [
         facilities: ["changing rooms", "lockers", "floodlights"],
         distance: 6,
         price: 90,
-        description: "Most of the time this island appears sunny and welcoming. Don't get lulled into complacency - watch out for the snakes!",
+        description: "Classy but expensive.",
         image: {
             src: "/images/pitches/HaggerstonPark.jpg",
             alt: "pitch and players at Haggerston Park"
