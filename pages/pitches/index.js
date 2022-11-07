@@ -59,7 +59,7 @@ export default function PitchesIndex( { pitchesData }) {
             return (priceOk && distanceOk && facilitiesOk)
         })
         setFilteredPitches(newFilteredPitches)
-        }, [activeFilters]);
+        }, [activeFilters, pitchesData]);
 
     const handleSortChange = (event) => {
         setActiveSort(event.target.value)
