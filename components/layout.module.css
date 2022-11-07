@@ -1,0 +1,21 @@
+.container {
+    max-width: 800px;
+    padding: 0 1rem;
+    margin: 3rem auto;
+}
+
+.homeHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer {
+    margin: 3rem auto 0;
+    max-width: 800px;
+    text-align: center;
+}
+
+.footer a {
+    margin-right: 3rem;
+}

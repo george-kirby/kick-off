@@ -38,5 +38,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 **Credits**
 
-https://openclipart.org/detail/272092/parrot-pirate
+https://openclipart.org/detail/284865/soccerball
 https://openclipart.org/detail/336904/happy-pirate-treasure-isolated
+
+https://commons.wikimedia.org/wiki/File:Archbishop%27s_Park_3.jpg
+
+https://commons.wikimedia.org/wiki/File:Hackney_Marshes,_London_Borough_of_Hackney,_E5_E9_(414929477).jpg
+
+https://hireapitch.com/Drapers-Field
+
+https://classpass.com/classes/footy-addicts-powerleague-shoreditch-london/football-powerleague-shoreditch-17056f50680
+
+https://commons.wikimedia.org/wiki/File:Sunday_morning_football_at_Victoria_Park_-_geograph.org.uk_-_1326364.jpg
+
+https://commons.wikimedia.org/wiki/File:All-weather_pitch,_Haggerston_Park_E2_-_geograph.org.uk_-_1600111.jpg

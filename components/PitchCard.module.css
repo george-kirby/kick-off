@@ -1,0 +1,30 @@
+.cardLink {
+    text-decoration: none;
+}
+
+.pitchCard {
+    margin: 20px 0;
+    min-width: 300px;
+    width: 90%;
+}
+
+.cardActionArea {
+    height: 100%;
+    width: 100%;
+}
+
+.pitchImage {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.textContainer {
+    padding: 0 15px;
+}
+
+@media screen and (min-width: 770px) {
+    .pitchCard {
+        width: 45%;
+    }
+}
