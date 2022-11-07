@@ -1,62 +1,62 @@
-const loots = [
+const pitches = [
     {
         id: 1,
-        title: "Emerald Isle",
-        slug: "emerald-isle",
-        dangers: ["snakes", "hurricanes"],
+        title: "Haggerston Park",
+        slug: "haggerston-park",
+        facilities: ["changing rooms", "lockers", "floodlights"],
         distance: 150,
-        value: 300,
+        price: 300,
         description: "Most of the time this island appears sunny and welcoming. Don't get lulled into complacency - watch out for the snakes!",
         image: {
-            src: "/images/islands/EmeraldIsle.png",
-            alt: "Emerald Isle"
+            src: "/images/islands/Emeraldpark.png",
+            alt: "Emerald park"
         }
     },
     {
         id: 2,
-        title: "Jade Isle",
-        slug: "jade-isle",
-        dangers: ["unknown"],
-        distance: 500,
-        value: 10,
-        description: "Why even bother? So far away for such little wealth! Unless there's more than meets the eye...",
+        title: "Victoria Park",
+        slug: "victoria-park",
+        facilities: [],
+        distance: 7.5,
+        price: 100,
+        description: "Grass is the purest surface to play on",
     },
     {
         id: 3,
-        title: "Sapphire Isle",
-        slug: "sapphire-isle",
-        dangers: ["quicksand", "snakes"],
-        distance: 50,
-        value: 100,
-        description: "Looks like a great deal"
+        title: "Powerleague Shoreditch",
+        slug: "powerleague-shoreditch",
+        facilities: ["changing rooms", "floodlights"],
+        distance: 4,
+        price: 80,
+        description: "Tiny pitches squeezed under a railway"
     },
     {
         id: 4,
-        title: "Diamond Isle",
-        slug: "diamond-isle",
-        dangers: ["dodos"],
-        distance: 25,
-        value: 20,
-        description: "Bit of a misleading name"
+        title: "Archbishop's Park",
+        slug: "archbishops-park",
+        facilities: ["floodlights"],
+        distance: 5,
+        price: 70,
+        description: "Lovely 4G pitch; goals could be better"
     },
     {
         id: 5,
-        title: "Ruby Isle",
-        slug: "ruby-isle",
-        dangers: ["version incompatibility"],
-        distance: 150,
-        value: 1000,
-        description: "Something more valuable than gems...documentation!"
+        title: "Hackney Marshes",
+        slug: "hackney-marshes",
+        facilities: ["changing rooms", "lockers"],
+        distance: 8,
+        price: 50,
+        description: "The Holy Land of Sunday League football"
     },
     {
         id: 6,
-        title: "Pirate Isle",
-        slug: "pirate-isle",
-        dangers: ["snakes", "pirates"],
-        distance: 200,
-        value: 750,
-        description: "Best keep your wits about you!"
+        title: "Draper's Field",
+        slug: "drapers-field",
+        facilities: ["changing rooms", "floodlights"],
+        distance: 9,
+        price: 90,
+        description: "Great surface, great goals, close to Leyton station"
     },
 ]
 
-export default loots
+export default pitches

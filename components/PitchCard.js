@@ -21,10 +21,10 @@ export default function PitchCard( { pitch } ) {
                     <li>{pitch.distance} miles</li>
                     <li>{pitch.value} dubloons</li>
                 </ul>
-                <ul className="dangers-list">
-                {pitch.dangers.map((danger, index) => {
+                <ul className="facilities-list">
+                {pitch.facilities.map((facility, index) => {
                     return (
-                      <li key={index}>{danger}</li>
+                      <li key={index}>{facility}</li>
                     )
                   })}
                 </ul>

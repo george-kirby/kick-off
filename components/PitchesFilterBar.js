@@ -4,32 +4,32 @@ import { Checkbox, FormControl, FormControlLabel, Input, Button } from '@mui/mat
 
 export default function PitchesFilterBar( { pitchesData, activeFilters, setActiveFilters } ) {
     
-    const [minValueField, setMinValueField] = useState(0)
-    const [maxValueField, setMaxValueField] = useState(10000)
+    const [minPriceField, setMinPriceField] = useState(0)
+    const [maxPriceField, setMaxPriceField] = useState(10000)
     const [minDistanceField, setMinDistanceField] = useState(0)
     const [maxDistanceField, setMaxDistanceField] = useState(1000)
 
 
-    const [allDangers, setAllDangers] = useState(() => {
-        const allDangersInitial = []
+    const [allFacilities, setAllFacilities] = useState(() => {
+        const allFacilitiesInitial = []
         pitchesData.forEach(pitch => {
-            pitch.dangers.forEach(danger => {
-                if (!allDangersInitial.includes(danger)) { allDangersInitial.push(danger) }
+            pitch.facilities.forEach(facility => {
+                if (!allFacilitiesInitial.includes(facility)) { allFacilitiesInitial.push(facility) }
             })
         })
-        return allDangersInitial
+        return allFacilitiesInitial
     });
 
-    const handleMinValueChange = (event) => {
-        setMinValueField(parseInt(event.target.value) || 0)
+    const handleMinPriceChange = (event) => {
+        setMinPriceField(parseInt(event.target.value) || 0)
     }
 
-    const handleMaxValueChange = (event) => {
-        setMaxValueField(parseInt(event.target.value) || 10000)
+    const handleMaxPriceChange = (event) => {
+        setMaxPriceField(parseInt(event.target.value) || 10000)
     }
 
-    const applyValueFilter = () => {
-        setActiveFilters({...activeFilters, minValue: minValueField, maxValue: maxValueField})
+    const applyPriceFilter = () => {
+        setActiveFilters({...activeFilters, minPrice: minPriceField, maxPrice: maxPriceField})
     }
 
     const handleMinDistanceChange = (event) => {
@@ -44,43 +44,43 @@ export default function PitchesFilterBar( { pitchesData, activeFilters, setActiv
         setActiveFilters({...activeFilters, minDistance: minDistanceField, maxDistance: maxDistanceField})
     }
 
-    const toggleDanger = (danger, value) => {
-        const newUnwantedDangers = [...activeFilters.unwantedDangers]
+    const toggleFacility = (facility, value) => {
+        const newUnwantedFacilities = [...activeFilters.unwantedFacilities]
         if (value) {
-            newUnwantedDangers.push(danger)
+            newUnwantedFacilities.push(facility)
         } else {
-            const index = newUnwantedDangers.indexOf(danger);
+            const index = newUnwantedFacilities.indexOf(facility);
                 if (index > -1) { 
-                    newUnwantedDangers.splice(index, 1);
+                    newUnwantedFacilities.splice(index, 1);
                 }
             }
-        setActiveFilters({...activeFilters, unwantedDangers: newUnwantedDangers})
+        setActiveFilters({...activeFilters, unwantedFacilities: newUnwantedFacilities})
     }
 
     return (
         <div>
             <div className="value-input">
-                <p>What value of loot are you looking for?</p>
+                <p>What's your price range? (£ per hour)</p>
                 <div className="value-inputs-container">
-                    <Input type="number" value={minValueField} min="0" max="10000" label="Min value (dubloons)" onChange={handleMinValueChange} />
-                    <Input type="number" value={maxValueField} min="0" max="10000" label="Max value (dubloons)" onChange={handleMaxValueChange} />
-                    <Button variant="contained" type="submit" onClick={applyValueFilter}>Apply</Button>
+                    <Input type="number" value={minPriceField} min="0" max="10000" label="Min value (pounds sterling per hour)" onChange={handleMinPriceChange} />
+                    <Input type="number" value={maxPriceField} min="0" max="10000" label="Max value (pounds sterling per hour)" onChange={handleMaxPriceChange} />
+                    <Button variant="contained" type="submit" onClick={applyPriceFilter}>Apply</Button>
                 </div>
             </div>
             <div className="distance-input">
-                <p>How far will you sail?</p>
+                <p>And distance? (miles from home)</p>
                 <div className="distance-inputs-container">
-                    <Input type="number" value={minDistanceField} min="0" max="1000" label="Min distance (nautical miles)" onChange={handleMinDistanceChange} />
-                    <Input type="number" value={maxDistanceField} min="0" max="1000" label="Max distance (nautical miles)" onChange={handleMaxDistanceChange} />
+                    <Input type="number" value={minDistanceField} min="0" max="1000" label="Min distance (miles)" onChange={handleMinDistanceChange} />
+                    <Input type="number" value={maxDistanceField} min="0" max="1000" label="Max distance (miles)" onChange={handleMaxDistanceChange} />
                     <Button variant="contained" type="submit" onClick={applyDistanceFilter}>Apply</Button>
                 </div>
             </div>
             <div className="distance-input"></div>
-            <div className="dangers-inputs">
-                <p>Any dangers you can't face?</p>
-                {allDangers.map((danger, index) => {
+            <div className="facilities-inputs">
+                <p>Select any facilities you need:</p>
+                {allFacilities.map((facility, index) => {
                     return (
-                        <FormControlLabel key={index} control={<Checkbox />} label={danger} onChange={(event, value) => toggleDanger(danger, value)} />                
+                        <FormControlLabel key={index} control={<Checkbox />} label={facility} onChange={(event, value) => toggleFacility(facility, value)} />                
                     )
                 })}
             </div>

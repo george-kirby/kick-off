@@ -18,7 +18,7 @@ export default function PitchesIndex( { pitchesData }) {
         maxValue: 10000,
         minDistance: 0,
         maxDistance: 1000,
-        unwantedDangers: []
+        unwantedFacilities: []
     });
     const [filteredPitches, setFilteredPitches] = useState(pitchesData);
     const [activeSort, setActiveSort] = useState("distanceLow");
@@ -54,8 +54,8 @@ export default function PitchesIndex( { pitchesData }) {
         const newFilteredPitches = pitchesData.filter(pitch => {
             const valueOk = (pitch.value >= activeFilters.minValue) && (pitch.value <= activeFilters.maxValue)
             const distanceOk = (pitch.distance >= activeFilters.minDistance) && (pitch.distance <= activeFilters.maxDistance)
-            const dangersOk = !pitch.dangers.some(danger => activeFilters.unwantedDangers.includes(danger))
-            return (valueOk && distanceOk && dangersOk)
+            const facilitiesOk = !pitch.facilities.some(facility => activeFilters.unwantedFacilities.includes(facility))
+            return (valueOk && distanceOk && facilitiesOk)
         })
         setFilteredPitches(newFilteredPitches)
         }, [activeFilters]);
